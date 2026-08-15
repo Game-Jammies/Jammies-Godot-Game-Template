@@ -2,7 +2,7 @@ extends Control
 ## Scene for displaying opening logos, placards, or other images before a game.
 
 ## Defines the path to the next scene.
-## Will attempt to read from AppConfig if left empty.
+## Will use ProjectSettings paths if left empty.
 @export_file("*.tscn") var next_scene_path : String
 ## The list of images to show in the opening sequence.
 @export var images : Array[Texture2D]
@@ -25,9 +25,7 @@ var tween : Tween
 var next_image_index : int = 0
 
 func get_next_scene_path() -> String:
-	if next_scene_path.is_empty():
-		return AppConfig.main_menu_scene_path
-	return next_scene_path
+	return MaaacksGameTemplatePlugin.get_main_menu_path(next_scene_path)
 
 func _on_scene_loaded() -> void:
 		SceneLoader.change_scene_to_resource()
@@ -51,10 +49,10 @@ func _add_textures_to_container(textures : Array[Texture2D]) -> void:
 		%ImagesContainer.call_deferred("add_child", texture_rect)
 
 func _event_skips_image(event : InputEvent) -> bool:
-	return event.is_action_released(&"ui_accept") or event.is_action_released(&"ui_select")
+	return event.is_action_pressed(&"ui_accept") or event.is_action_pressed(&"ui_select")
 
 func _event_skips_intro(event : InputEvent) -> bool:
-	return event.is_action_released(&"ui_cancel")
+	return event.is_action_pressed(&"ui_cancel")
 
 func _event_is_mouse_button_released(event : InputEvent) -> bool:
 	return event is InputEventMouseButton and not event.is_pressed()
