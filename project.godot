@@ -17,9 +17,9 @@ config/icon="res://icon.png"
 
 [autoload]
 
-SceneLoader="*res://autoloads/scene_loader.tscn"
-ProjectMusicController="*res://autoloads/project_music_controller.tscn"
-ProjectUISoundController="*res://autoloads/project_ui_sound_controller.tscn"
+SceneLoader="*res://setup/autoloads/scene_loader.tscn"
+ProjectMusicController="*res://setup/autoloads/project_music_controller.tscn"
+ProjectUISoundController="*res://setup/autoloads/project_ui_sound_controller.tscn"
 
 [display]
 

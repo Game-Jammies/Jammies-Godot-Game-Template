@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcf5w43mufosa"
-path="res://.godot/imported/select_level_select_packed_scene.png-bc472cb502fc2635e66585d731d9a65e.ctex"
+uid="uid://bw232wdvmw33g"
+path="res://.godot/imported/game-resolution-vs-screen-resolution.png-3b0f5b728af4d8368fb5ae2231dfcf00.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://maaacks_game_template/media/documentation/select_level_select_packed_scene.png"
-dest_files=["res://.godot/imported/select_level_select_packed_scene.png-bc472cb502fc2635e66585d731d9a65e.ctex"]
+source_file="res://maaacks_game_template/docs/game-resolution-vs-screen-resolution.png"
+dest_files=["res://.godot/imported/game-resolution-vs-screen-resolution.png-3b0f5b728af4d8368fb5ae2231dfcf00.ctex"]
 
 [params]
 

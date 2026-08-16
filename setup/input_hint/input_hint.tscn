@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bylrfo8w24v0e"]
 
-[ext_resource type="Script" uid="uid://co6ycsx4rpsaj" path="res://input_hint/input_hint.gd" id="1_273hj"]
+[ext_resource type="Script" uid="uid://co6ycsx4rpsaj" path="res://setup/input_hint/input_hint.gd" id="1_273hj"]
 
 [node name="InputHint" type="Control" unique_id=352483959]
 custom_minimum_size = Vector2(12, 12)
