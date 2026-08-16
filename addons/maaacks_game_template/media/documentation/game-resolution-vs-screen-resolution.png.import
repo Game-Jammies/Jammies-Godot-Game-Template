@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxodj5plfb52k"
-path="res://.godot/imported/logo_vertical_color_dark.png-914a689b7551193a70a010921088ebb7.ctex"
+uid="uid://bw232wdvmw33g"
+path="res://.godot/imported/game-resolution-vs-screen-resolution.png-a56006a35868821303947d2799436c19.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/maaacks_game_template/assets/godot_engine_logo/logo_vertical_color_dark.png"
-dest_files=["res://.godot/imported/logo_vertical_color_dark.png-914a689b7551193a70a010921088ebb7.ctex"]
+source_file="res://addons/maaacks_game_template/media/documentation/game-resolution-vs-screen-resolution.png"
+dest_files=["res://.godot/imported/game-resolution-vs-screen-resolution.png-a56006a35868821303947d2799436c19.ctex"]
 
 [params]
 
