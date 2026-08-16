@@ -17,18 +17,14 @@ config/icon="res://icon.png"
 
 [autoload]
 
-SceneLoader="*res://addons/maaacks_game_template/base/nodes/autoloads/scene_loader.tscn"
-ProjectMusicController="*res://addons/maaacks_game_template/base/nodes/autoloads/project_music_controller.tscn"
-ProjectUISoundController="*res://addons/maaacks_game_template/base/nodes/autoloads/project_ui_sound_controller.tscn"
+SceneLoader="*res://maaacks_game_template/base/nodes/autoloads/scene_loader.tscn"
+ProjectMusicController="*res://maaacks_game_template/base/nodes/autoloads/project_music_controller.tscn"
+ProjectUISoundController="*res://maaacks_game_template/base/nodes/autoloads/project_ui_sound_controller.tscn"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/maaacks_game_template/plugin.cfg", "res://addons/plugin_updater/plugin.cfg")
 
 [gui]
 
@@ -95,25 +91,11 @@ interact={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://addons/maaacks_game_template/base/translations/menus_translations.en.translation", "res://addons/maaacks_game_template/base/translations/menus_translations.fr.translation")
-
-[maaacks_game_template]
-
-copy_path="res://"
-disable_update_check=false
-disable_install_wizard=true
-disable_install_audio_busses=true
+locale/translations=PackedStringArray("res://maaacks_game_template/base/translations/menus_translations.en.translation", "res://maaacks_game_template/base/translations/menus_translations.fr.translation")
 
 [physics]
 
 common/enable_pause_aware_picking=true
-
-[plugin_updater]
-
-plugins={
-"res://addons/maaacks_game_template/": "https://github.com/Maaack/Godot-Game-Template",
-"res://addons/plugin_updater/": "https://github.com/Maaack/Godot-Plugin-Updater"
-}
 
 [rendering]
 
