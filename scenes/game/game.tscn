@@ -1,48 +1,47 @@
-[gd_scene format=3 uid="uid://dw8qysr1hx66l"]
+[gd_scene format=3 uid="uid://b07c1lboon4pf"]
 
-[ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/nodes/music_players/background_music_player.tscn" id="1_tr8b4"]
-[ext_resource type="Script" uid="uid://bmcttnpvsi36l" path="res://scenes/game/scripts/game_timer.gd" id="2_1qftq"]
-[ext_resource type="Script" uid="uid://cyh0d64pfygbl" path="res://addons/maaacks_game_template/base/nodes/utilities/pause_menu_controller.gd" id="3_vvut4"]
-[ext_resource type="PackedScene" uid="uid://dc7om4hdsifti" path="res://scenes/windows/pause_menu_layer.tscn" id="4_5prq0"]
-[ext_resource type="Script" uid="uid://bbymrin0cm704" path="res://addons/maaacks_game_template/extras/scripts/level_loader.gd" id="5_4ybgr"]
-[ext_resource type="Script" uid="uid://brh5v3dnfoxa3" path="res://scripts/level_and_state_manager.gd" id="6_lo7qv"]
-[ext_resource type="PackedScene" uid="uid://ba11po12cvait" path="res://scenes/windows/game_won_window.tscn" id="7_xpges"]
-[ext_resource type="PackedScene" uid="uid://bx7s80d8smic4" path="res://scenes/windows/level_lost_window.tscn" id="8_iu41y"]
-[ext_resource type="PackedScene" uid="uid://cc0d45hr46e5m" path="res://scenes/windows/level_won_window.tscn" id="9_7ke7p"]
-[ext_resource type="Script" uid="uid://wjq7li836lwj" path="res://addons/maaacks_game_template/extras/scripts/scene_lister.gd" id="10_h5e52"]
-[ext_resource type="PackedScene" uid="uid://c2c3f1ywjlrff" path="res://scenes/loading_screen/level_loading_screen.tscn" id="11_25ou5"]
+[ext_resource type="Texture2D" uid="uid://cty20idi1am0c" path="res://assets/git_logo/Git-Logo-2Color.png" id="1_m44fu"]
+[ext_resource type="Script" uid="uid://cqs6e6vt0pyeu" path="res://scenes/game/game.gd" id="1_vrspl"]
+[ext_resource type="Texture2D" uid="uid://ctfl5lq83mmic" path="res://icon.png" id="2_vrspl"]
 
-[node name="Game" type="Node" unique_id=1262092417]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2jgpe"]
+size = Vector2(911, 384)
 
-[node name="BackgroundMusicPlayer" parent="." unique_id=986713811 instance=ExtResource("1_tr8b4")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_2jgpe"]
+radius = 27.45903
 
-[node name="GameTimer" type="Node" parent="." unique_id=116840261]
-script = ExtResource("2_1qftq")
+[node name="Game" type="Node2D" unique_id=806231061]
+script = ExtResource("1_vrspl")
+main_menu_path = "uid://conoq2gmylqvr"
 
-[node name="PauseMenuController" type="Node" parent="." unique_id=1685173287]
-script = ExtResource("3_vvut4")
-pause_menu_packed = ExtResource("4_5prq0")
+[node name="RigidBody2D" type="StaticBody2D" parent="." unique_id=1205348767]
+position = Vector2(650, 538)
+scale = Vector2(0.5, 0.5)
 
-[node name="LevelLoader" type="Node" parent="." unique_id=1364778615 node_paths=PackedStringArray("level_container", "level_loading_screen")]
-script = ExtResource("5_4ybgr")
-level_container = NodePath("../LevelContainer")
-level_loading_screen = NodePath("../LevelLoadingScreen")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=1753554581]
+position = Vector2(0.5, -2)
+shape = SubResource("RectangleShape2D_2jgpe")
 
-[node name="LevelManager" type="Node" parent="." unique_id=1350972375 node_paths=PackedStringArray("level_loader", "scene_lister")]
-script = ExtResource("6_lo7qv")
-level_loader = NodePath("../LevelLoader")
-starting_level_path = "res://scenes/game/levels/level_1.tscn"
-scene_lister = NodePath("SceneLister")
-game_won_scene = ExtResource("7_xpges")
-level_lost_scene = ExtResource("8_iu41y")
-level_won_scene = ExtResource("9_7ke7p")
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D" unique_id=1165773256]
+texture = ExtResource("1_m44fu")
 
-[node name="SceneLister" type="Node" parent="LevelManager" unique_id=673614733]
-script = ExtResource("10_h5e52")
-files = Array[String](["res://scenes/game/levels/level_1.tscn", "res://scenes/game/levels/level_2.tscn", "res://scenes/game/levels/level_3.tscn"])
-directory = "res://scenes/game/levels"
+[node name="RigidBody2D2" type="RigidBody2D" parent="." unique_id=1867043664]
+position = Vector2(694, 118)
+rotation = 0.18935044
+constant_force = Vector2(0, -1)
 
-[node name="LevelContainer" type="Node" parent="." unique_id=437554331]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2" unique_id=1879531073]
+position = Vector2(1.2113695, -4.304949)
+shape = SubResource("CircleShape2D_2jgpe")
 
-[node name="LevelLoadingScreen" parent="." unique_id=816430938 instance=ExtResource("11_25ou5")]
-visible = false
+[node name="Sprite2D2" type="Sprite2D" parent="RigidBody2D2" unique_id=1243794588]
+texture = ExtResource("2_vrspl")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1631238278]
+
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=358855132]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Exit"
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

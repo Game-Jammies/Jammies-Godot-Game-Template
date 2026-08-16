@@ -31,15 +31,12 @@ var sub_menu : Control
 @onready var exit_button = %ExitButton
 @onready var exit_confirmation = %ExitConfirmation
 
-func get_game_scene_path() -> String:
-	return MaaacksGameTemplatePlugin.get_game_path(game_scene_path)
-
 func load_game_scene() -> void:
 	if signal_game_start:
-		SceneLoader.load_scene(get_game_scene_path(), true)
+		SceneLoader.load_scene(game_scene_path, true)
 		game_started.emit()
 	else:
-		SceneLoader.load_scene(get_game_scene_path())
+		SceneLoader.load_scene(game_scene_path)
 
 func new_game() -> void:
 	load_game_scene()
@@ -90,7 +87,7 @@ func _hide_exit_for_web() -> void:
 		exit_button.hide()
 
 func _hide_new_game_if_unset() -> void:
-	if get_game_scene_path().is_empty():
+	if game_scene_path.is_empty():
 		new_game_button.hide()
 
 func _hide_options_if_unset() -> void:

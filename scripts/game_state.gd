@@ -2,78 +2,48 @@ class_name GameState
 extends Resource
 
 const STATE_NAME : String = "GameState"
-const FILE_PATH = "res://scripts/game_state.gd"
+const FILE_PATH = "user://global_state.tres"
 
-@export var level_states : Dictionary = {}
-@export var current_level_path : String
-@export var checkpoint_level_path : String
-@export var total_games_played : int
-@export var play_time : int
-@export var total_time : int
 
-static func get_level_state(level_state_key : String) -> LevelState:
-	if not has_game_state(): 
-		return
-	var game_state := get_or_create_state()
-	if level_state_key.is_empty() : return
-	if level_state_key in game_state.level_states:
-		return game_state.level_states[level_state_key] 
-	else:
-		var new_level_state := LevelState.new()
-		game_state.level_states[level_state_key] = new_level_state
-		GlobalState.save()
-		return new_level_state
 
-static func has_game_state() -> bool:
-	return GlobalState.has_state(STATE_NAME)
+## The scene to load so the player can continue where they left off.
+@export var continue_scene_path : String
 
-static func get_or_create_state() -> GameState:
-	return GlobalState.get_or_create_state(STATE_NAME, FILE_PATH)
 
-static func get_current_level_path() -> String:
-	if not has_game_state(): 
+
+## The canonical instance of this class.
+static var _instance : GameState
+
+static func get_continue_scene_path() -> String:
+	if not _instance: 
 		return ""
-	var game_state := get_or_create_state()
-	return game_state.current_level_path
+	load_state()
+	return _instance.continue_scene_path
 
-static func get_checkpoint_level_path() -> String:
-	if not has_game_state(): 
-		return ""
-	var game_state := get_or_create_state()
-	return game_state.checkpoint_level_path
-
-static func get_levels_reached() -> int:
-	if not has_game_state(): 
-		return 0
-	var game_state := get_or_create_state()
-	return game_state.level_states.size()
-
-static func set_checkpoint_level_path(level_path : String) -> void:
-	var game_state := get_or_create_state()
-	game_state.checkpoint_level_path = level_path
-	get_level_state(level_path)
-	GlobalState.save()
-
-static func set_current_level_path(level_path : String) -> void:
-	var game_state := get_or_create_state()
-	game_state.current_level_path = level_path
-	GlobalState.save()
-
-static func start_game() -> void:
-	var game_state := get_or_create_state()
-	game_state.total_games_played += 1
-	GlobalState.save()
-
-static func continue_game() -> void:
-	var game_state := get_or_create_state()
-	game_state.current_level_path = game_state.checkpoint_level_path
-	GlobalState.save()
+static func set_continue_scene_path(level_path : String) -> void:
+	load_state()
+	_instance.continue_scene_path = level_path
+	save_state()
 
 static func reset() -> void:
-	var game_state := get_or_create_state()
-	game_state.level_states = {}
-	game_state.current_level_path = ""
-	game_state.checkpoint_level_path = ""
-	game_state.play_time = 0
-	game_state.total_time = 0
-	GlobalState.save()
+	load_state()
+	_instance.continue_scene_path = ""
+	save_state()
+
+
+
+## If `GameState._instance` is not defined, try to load it from file or just create a new one.
+static func load_state() -> void:
+	if _instance is GameState: 
+		return
+	if FileAccess.file_exists(FILE_PATH):
+		_instance = ResourceLoader.load(FILE_PATH)
+		print("loaded instance: ", _instance)
+	if not _instance:
+		_instance = GameState.new()
+		print("created instance: ", _instance)
+
+## Saves the current instance using the resource saver.
+static func save_state() -> void:
+	if _instance is GameState:
+		ResourceSaver.save(_instance, FILE_PATH)

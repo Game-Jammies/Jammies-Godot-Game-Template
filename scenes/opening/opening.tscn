@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://7fpbknl5sesd" path="res://assets/godot_engine_logo/logo_vertical_color_dark.png" id="2_ke3tw"]
 
 [node name="Opening" unique_id=684202726 instance=ExtResource("1_ke3tw")]
+next_scene_path = "uid://conoq2gmylqvr"
 images = Array[Texture2D]([ExtResource("2_ke3tw")])
 
 [node name="ImagesContainer" parent="." index="2" unique_id=1471559661]
