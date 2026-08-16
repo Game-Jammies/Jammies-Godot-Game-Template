@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://dc7om4hdsifti"]
 
-[ext_resource type="Script" uid="uid://c8wskdii8xstt" path="res://scenes/windows/pause_menu_layer.gd" id="1_i1w7n"]
-[ext_resource type="PackedScene" uid="uid://6gdbfi0172ji" path="res://maaacks_game_template/base/nodes/windows/overlaid_window.tscn" id="2_1r40g"]
-[ext_resource type="Script" uid="uid://c2tut61g32mog" path="res://scenes/windows/pause_menu.gd" id="3_okuwl"]
-[ext_resource type="PackedScene" uid="uid://bh3sehmvmyc7n" path="res://scenes/windows/pause_menu_options_window.tscn" id="4_mh1be"]
-[ext_resource type="PackedScene" uid="uid://cwt4p3bufkke5" path="res://maaacks_game_template/base/nodes/windows/confirmation_overlaid_window.tscn" id="5_bgbk1"]
+[ext_resource type="Script" uid="uid://c8wskdii8xstt" path="res://scenes/menus/windows/pause_menu_layer.gd" id="1_i1w7n"]
+[ext_resource type="PackedScene" uid="uid://6gdbfi0172ji" path="res://scenes/menus/window_templates/overlaid_window.tscn" id="2_1r40g"]
+[ext_resource type="Script" uid="uid://c2tut61g32mog" path="res://scenes/menus/windows/pause_menu.gd" id="3_okuwl"]
+[ext_resource type="PackedScene" uid="uid://bh3sehmvmyc7n" path="res://scenes/menus/windows/pause_menu_options_window.tscn" id="4_mh1be"]
+[ext_resource type="PackedScene" uid="uid://cwt4p3bufkke5" path="res://scenes/menus/window_templates/confirmation_overlaid_window.tscn" id="5_bgbk1"]
 
 [node name="PauseMenuLayer" type="CanvasLayer" unique_id=914002369]
 process_mode = 3
@@ -15,15 +15,15 @@ unique_name_in_owner = true
 process_mode = 3
 custom_minimum_size = Vector2(256, 312)
 script = ExtResource("3_okuwl")
+pauses_game = true
+update_content = true
+title = "Paused"
 options_menu_scene = ExtResource("4_mh1be")
 main_menu_scene_path = ""
 restart_confirmation_node_path = NodePath("../RestartConfirmation")
 main_menu_confirmation_node_path = NodePath("../MainMenuConfirmation")
 exit_confirmation_node_path = NodePath("../ExitConfirmation")
 menu_container_node_path = NodePath("..")
-pauses_game = true
-update_content = true
-title = "Paused"
 
 [node name="TitleLabel" parent="PauseMenu/ContentContainer/BoxContainer/TitleMargin/BoxContainer" parent_id_path=PackedInt32Array(6629802, 1788474031) index="0" unique_id=1049966061]
 text = "Paused"

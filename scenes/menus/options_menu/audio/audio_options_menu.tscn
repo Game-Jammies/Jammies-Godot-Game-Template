@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bwugqn2cjr41e" path="res://scenes/menus/options_menu/audio/audio_options_menu.gd" id="1_jlqbf"]
 [ext_resource type="PackedScene" uid="uid://cl416gdb1fgwr" path="res://scenes/menus/options_menu/option_control/slider_option_control.tscn" id="2_2olls"]
 [ext_resource type="PackedScene" uid="uid://ymm34rr2enho" path="res://scenes/menus/options_menu/audio/audio_input_option_control.tscn" id="2_33wdu"]
-[ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://maaacks_game_template/base/nodes/capture_focus.gd" id="3_3mgwn"]
+[ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://scenes/menus/capture_focus.gd" id="3_3mgwn"]
 [ext_resource type="PackedScene" uid="uid://bsxh6v7j0257h" path="res://scenes/menus/options_menu/option_control/toggle_option_control.tscn" id="4_t48my"]
 
 [node name="Audio" type="MarginContainer" unique_id=651805888]

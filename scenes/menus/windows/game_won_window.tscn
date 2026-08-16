@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://ba11po12cvait"]
 
-[ext_resource type="PackedScene" uid="uid://6gdbfi0172ji" path="res://maaacks_game_template/base/nodes/windows/overlaid_window.tscn" id="1_lpba5"]
-[ext_resource type="Script" uid="uid://docsfi6avvqvw" path="res://scenes/windows/game_won_window.gd" id="2_rvsdo"]
-[ext_resource type="PackedScene" uid="uid://cwt4p3bufkke5" path="res://maaacks_game_template/base/nodes/windows/confirmation_overlaid_window.tscn" id="3_ga0ue"]
+[ext_resource type="PackedScene" uid="uid://6gdbfi0172ji" path="res://scenes/menus/window_templates/overlaid_window.tscn" id="1_lpba5"]
+[ext_resource type="Script" uid="uid://docsfi6avvqvw" path="res://scenes/menus/windows/game_won_window.gd" id="2_rvsdo"]
+[ext_resource type="PackedScene" uid="uid://cwt4p3bufkke5" path="res://scenes/menus/window_templates/confirmation_overlaid_window.tscn" id="3_ga0ue"]
 
 [node name="GameWonWindow" unique_id=862385343 instance=ExtResource("1_lpba5")]
 custom_minimum_size = Vector2(432, 240)

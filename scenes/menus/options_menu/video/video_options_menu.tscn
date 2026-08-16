@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b2vy7sthrtje7"]
 
 [ext_resource type="Script" uid="uid://cpe5r24151r5n" path="res://scenes/menus/options_menu/video/video_options_menu.gd" id="1_y4x8v"]
-[ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://maaacks_game_template/base/nodes/capture_focus.gd" id="2_03tbs"]
+[ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://scenes/menus/capture_focus.gd" id="2_03tbs"]
 [ext_resource type="PackedScene" uid="uid://bsxh6v7j0257h" path="res://scenes/menus/options_menu/option_control/toggle_option_control.tscn" id="3_oqqqo"]
 [ext_resource type="PackedScene" uid="uid://c01ayjblhcg1t" path="res://scenes/menus/options_menu/option_control/vector_2_list_option_control.tscn" id="4_q1b35"]
 [ext_resource type="PackedScene" uid="uid://b6bl3n5mp3m1e" path="res://scenes/menus/options_menu/option_control/list_option_control.tscn" id="5_qk4ys"]

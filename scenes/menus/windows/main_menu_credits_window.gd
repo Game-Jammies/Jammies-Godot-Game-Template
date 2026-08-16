@@ -1,5 +1,5 @@
 @tool
-extends "res://maaacks_game_template/base/nodes/windows/overlaid_window_scene_container.gd"
+extends OverlaidWindowContainer
 
 func _ready() -> void:
 	super._ready()

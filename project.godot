@@ -91,7 +91,7 @@ interact={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://maaacks_game_template/base/translations/menus_translations.en.translation", "res://maaacks_game_template/base/translations/menus_translations.fr.translation")
+locale/translations=PackedStringArray("res://translations/menus_translations.en.translation", "res://translations/menus_translations.fr.translation")
 
 [physics]
 

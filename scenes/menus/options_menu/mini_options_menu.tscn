@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cqtded1lw2j1r" path="res://scenes/menus/options_menu/mini_options_menu.gd" id="1_7t2pa"]
 [ext_resource type="PackedScene" uid="uid://cl416gdb1fgwr" path="res://scenes/menus/options_menu/option_control/slider_option_control.tscn" id="2_7t2pa"]
-[ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://maaacks_game_template/base/nodes/capture_focus.gd" id="3_x0e25"]
+[ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://scenes/menus/capture_focus.gd" id="3_x0e25"]
 [ext_resource type="PackedScene" uid="uid://c01ayjblhcg1t" path="res://scenes/menus/options_menu/option_control/vector_2_list_option_control.tscn" id="4_x0e25"]
 [ext_resource type="PackedScene" uid="uid://bsxh6v7j0257h" path="res://scenes/menus/options_menu/option_control/toggle_option_control.tscn" id="4_xg1r4"]
 
