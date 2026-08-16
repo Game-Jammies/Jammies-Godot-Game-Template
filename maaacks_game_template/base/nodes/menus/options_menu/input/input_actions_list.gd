@@ -6,6 +6,8 @@ extends Container
 const EMPTY_INPUT_ACTION_STRING = " "
 
 signal already_assigned(action_name : String, input_name : String)
+@warning_ignore("unused_signal")
+signal minimum_reached(action_name : String)
 signal button_clicked(action_name : String, readable_input_name : String)
 
 const BUTTON_NAME_GROUP_STRING : String = "%s:%d"
