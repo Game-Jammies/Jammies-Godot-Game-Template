@@ -1,4 +1,4 @@
-extends "res://maaacks_game_template/base/nodes/menus/options_menu/paginated_tab_container.gd"
+extends PaginatedTabContainer
 
 
 ## Shows the tab for controls remapping even if no input actions are found.

@@ -25,8 +25,6 @@ const KEYBOARD_AND_MOUSE := [InputEventHelper.DEVICE_KEYBOARD, InputEventHelper.
 ## Delay before refreshing current device.
 @export var device_update_delay : float = 0.5
 @export_group("Icons")
-## Reference to an InputIconMapper in the scene tree.
-@export var input_icon_mapper : InputIconMapper
 ## The expand mode set to the icon, if available.
 @export var expand_mode : TextureRect.ExpandMode :
 	set(value):
@@ -59,8 +57,6 @@ func _get_input_event() -> InputEvent:
 func _refresh() -> void:
 	var input_event := _get_input_event()
 	var icon_texture : Texture
-	if input_icon_mapper:
-		icon_texture = input_icon_mapper.get_icon(input_event)
 	if icon_texture:
 		_icon_texture_rect.texture = icon_texture
 		_name_label.text = ""
@@ -71,8 +67,6 @@ func _refresh() -> void:
 func _ready() -> void:
 	_refresh.call_deferred()
 	expand_mode = expand_mode
-	if input_icon_mapper:
-		input_icon_mapper.joypad_device_changed.connect(_refresh)
 	if input_cycle_delay > 0:
 		_cycle_delay_timer.start(input_cycle_delay)
 	if last_device_specific:

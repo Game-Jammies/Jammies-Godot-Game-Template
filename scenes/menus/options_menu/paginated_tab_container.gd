@@ -1,4 +1,4 @@
-extends TabContainer
+class_name PaginatedTabContainer extends TabContainer
 ## Applies UI page up and page down inputs to tab switching.
 
 func _unhandled_input(event : InputEvent) -> void:

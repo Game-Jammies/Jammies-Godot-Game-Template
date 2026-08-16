@@ -17,9 +17,9 @@ config/icon="res://icon.png"
 
 [autoload]
 
-SceneLoader="*res://maaacks_game_template/base/nodes/autoloads/scene_loader.tscn"
-ProjectMusicController="*res://maaacks_game_template/base/nodes/autoloads/project_music_controller.tscn"
-ProjectUISoundController="*res://maaacks_game_template/base/nodes/autoloads/project_ui_sound_controller.tscn"
+SceneLoader="*res://autoloads/scene_loader.tscn"
+ProjectMusicController="*res://autoloads/project_music_controller.tscn"
+ProjectUISoundController="*res://autoloads/project_ui_sound_controller.tscn"
 
 [display]
 
