@@ -12,7 +12,6 @@ radius = 27.45903
 
 [node name="Game" type="Node2D" unique_id=806231061]
 script = ExtResource("1_vrspl")
-main_menu_path = "uid://conoq2gmylqvr"
 
 [node name="RigidBody2D" type="StaticBody2D" parent="." unique_id=1205348767]
 position = Vector2(650, 538)

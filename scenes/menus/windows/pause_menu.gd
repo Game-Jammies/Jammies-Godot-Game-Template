@@ -1,10 +1,7 @@
 @tool
 extends OverlaidWindow
 
-@export var options_menu_scene : PackedScene
-## Path to a main menu scene.
-## Will use ProjectSettings paths if left empty.
-@export_file("*.tscn") var main_menu_scene_path : String
+@export var scene_refs: SceneRefs
 @export_node_path(&"ConfirmationOverlaidWindow") var restart_confirmation_node_path : NodePath
 @export_node_path(&"ConfirmationOverlaidWindow") var main_menu_confirmation_node_path : NodePath
 @export_node_path(&"ConfirmationOverlaidWindow") var exit_confirmation_node_path : NodePath
@@ -21,9 +18,6 @@ extends OverlaidWindow
 var open_window : Node
 var restarting : bool = false
 
-func get_main_menu_scene_path() -> String:
-	return MaaacksGameTemplatePlugin.get_main_menu_path(main_menu_scene_path)
-
 func close_window() -> void:
 	if open_window != null:
 		if open_window.has_method("close"):
@@ -32,17 +26,13 @@ func close_window() -> void:
 			open_window.hide()
 		open_window = null
 
-func _load_scene(scene_path: String) -> void:
-	_scene_tree.paused = false
-	SceneLoader.load_scene(scene_path)
-
 func _show_window(window : Control) -> void:
 	window.show()
 	open_window = window
 	await window.hidden
 	open_window = null
 
-func _load_and_show_menu(scene : PackedScene) -> void:
+func _load_and_show_menu(scene: PackedScene) -> void:
 	var window_instance : Control = scene.instantiate()
 	window_instance.visible = false
 	menu_container.add_child.call_deferred(window_instance)
@@ -59,10 +49,10 @@ func _refresh_exit_button() -> void:
 	exit_button.visible = !OS.has_feature("web")
 
 func _refresh_options_button() -> void:
-	options_button.visible = options_menu_scene != null
+	options_button.visible = scene_refs.options_menu != null
 
 func _refresh_main_menu_button() -> void:
-	main_menu_button.visible = !get_main_menu_scene_path().is_empty()
+	main_menu_button.visible = scene_refs.main_menu != null
 
 func _ready() -> void:
 	_refresh_exit_button()
@@ -77,7 +67,7 @@ func _on_restart_button_pressed() -> void:
 	_show_window(restart_confirmation)
 
 func _on_options_button_pressed() -> void:
-	_load_and_show_menu(options_menu_scene)
+	_load_and_show_menu(scene_refs.options_menu)
 
 func _on_main_menu_button_pressed() -> void:
 	_show_window(main_menu_confirmation)
@@ -94,7 +84,8 @@ func _on_restart_confirmation_closed() -> void:
 		close()
 
 func _on_main_menu_confirmation_confirmed():
-	_load_scene(get_main_menu_scene_path())
+	_scene_tree.paused = false
+	SceneLoader.load_scene(scene_refs.main_menu)
 
 func _on_exit_confirmation_confirmed():
 	get_tree().quit()

@@ -7,13 +7,8 @@ signal sub_menu_closed
 signal game_started
 signal game_exited
 
-## Defines the path to the game scene. Hides the play button if empty.
-## Will use ProjectSettings paths if left empty.
-@export_file("*.tscn") var game_scene_path : String
-## The scene to open when a player clicks the 'Options' button.
-@export var options_packed_scene : PackedScene
-## The scene to open when a player clicks the 'Credits' button.
-@export var credits_packed_scene : PackedScene
+@export var scene_refs: SceneRefs
+
 @export var confirm_exit : bool = true
 @export_group("Extra Settings")
 ## If true, signals that the game has started loading in the background, instead of directly loading it.
@@ -33,10 +28,10 @@ var sub_menu : Control
 
 func load_game_scene() -> void:
 	if signal_game_start:
-		SceneLoader.load_scene(game_scene_path, true)
+		SceneLoader.load_scene(scene_refs.game_start, true)
 		game_started.emit()
 	else:
-		SceneLoader.load_scene(game_scene_path)
+		SceneLoader.load_scene(scene_refs.game_start)
 
 func new_game() -> void:
 	load_game_scene()
@@ -87,15 +82,15 @@ func _hide_exit_for_web() -> void:
 		exit_button.hide()
 
 func _hide_new_game_if_unset() -> void:
-	if game_scene_path.is_empty():
+	if scene_refs.game_start.is_empty():
 		new_game_button.hide()
 
 func _hide_options_if_unset() -> void:
-	if options_packed_scene == null:
+	if scene_refs.options_menu == null:
 		options_button.hide()
 
 func _hide_credits_if_unset() -> void:
-	if credits_packed_scene == null:
+	if scene_refs.credits_menu == null:
 		credits_button.hide()
 
 func _ready() -> void:
@@ -108,10 +103,10 @@ func _on_new_game_button_pressed() -> void:
 	new_game()
 
 func _on_options_button_pressed() -> void:
-	_open_sub_menu(options_packed_scene)
+	_open_sub_menu(scene_refs.options_menu)
 
 func _on_credits_button_pressed() -> void:
-	_open_sub_menu(credits_packed_scene)
+	_open_sub_menu(scene_refs.credits_menu)
 
 func _on_exit_button_pressed() -> void:
 	try_exit_game()

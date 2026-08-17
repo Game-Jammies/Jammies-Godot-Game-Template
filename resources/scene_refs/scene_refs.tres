@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="ScenePathing" format=3 uid="uid://dgyh8wtk600dy"]
+
+[ext_resource type="Script" uid="uid://cv58tnjuheha1" path="res://resources/scene_refs/scene_refs.gd" id="1_yrpp7"]
+
+[resource]
+script = ExtResource("1_yrpp7")
+metadata/_custom_type_script = "uid://cv58tnjuheha1"

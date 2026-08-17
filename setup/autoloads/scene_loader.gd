@@ -91,21 +91,37 @@ func _check_loading_screen() -> bool:
 func reload_current_scene() -> void:
 	get_tree().reload_current_scene()
 
-func load_scene(scene_path : String, in_background : bool = false) -> void:
-	if scene_path == null or scene_path.is_empty():
-		push_error("no path given to load")
+# this was the previous function, it enabled the user to load from a string 
+# because the project had a reference to the game path and the main menu path 
+# but it didn't load the scenes into memory to store them as packedscenes. 
+# The previous way is probably the better way to do it, 
+# but I just need to change it so that it works for now. 
+#TODO change load_scene back to using string paths
+
+#func load_scene(scene_path : String, in_background : bool = false) -> void:
+	#if scene_path == null or scene_path.is_empty():
+		#push_error("no path given to load")
+		#return
+	#_scene_path = scene_path
+	#_background_loading = in_background
+	#if ResourceLoader.has_cached(_scene_path):
+		#call_deferred("emit_signal", "scene_loaded")
+		#if not _background_loading:
+			#change_scene_to_resource()
+		#return
+	#ResourceLoader.load_threaded_request(_scene_path)
+	#set_process(true)
+	#if _check_loading_screen() and not _background_loading:
+		#change_scene_to_loading_screen()
+
+func load_scene(packed_scene: PackedScene, in_background: bool = false) -> void:
+	if packed_scene == null:
+		push_error("No PackedScene provided to load")
 		return
-	_scene_path = scene_path
-	_background_loading = in_background
-	if ResourceLoader.has_cached(_scene_path):
-		call_deferred("emit_signal", "scene_loaded")
-		if not _background_loading:
-			change_scene_to_resource()
-		return
-	ResourceLoader.load_threaded_request(_scene_path)
-	set_process(true)
-	if _check_loading_screen() and not _background_loading:
-		change_scene_to_loading_screen()
+	# Scene is already in memory, so loading completes instantly
+	call_deferred("emit_signal", "scene_loaded")
+	if not in_background:
+		change_scene_to_resource()
 
 func _unhandled_key_input(event : InputEvent) -> void:
 	if event.is_action_pressed(&"ui_paste"):
